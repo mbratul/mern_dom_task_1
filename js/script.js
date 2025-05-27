@@ -1,6 +1,3 @@
-/* const choToVaiElement = document.createElement("div");
-choToVaiElement.innerHTML = "<span>Choto Vai</span>";
+let headerElement = document.getElementById("header");
 
-const container = document.querySelector(".todo-list");
-
-container.appendChild(choToVaiElement); */
+// console.log(headerElement);
