@@ -46,6 +46,14 @@ console.log(previous_element);
 
 let next_element = document.querySelector(".todo-list"); // to select immediate next level tag
 console.log(next_element.nextElementSibling);
+
+/* const choToVaiElement = document.createElement("div");
+choToVaiElement.innerHTML = "<span>Choto Vai</span>";
+
+const container = document.querySelector(".todo-list");
+
+container.appendChild(choToVaiElement); */
+
 /* to select all queryselectorAll use for loop */
 /* let all_item = document.querySelectorAll(".item");
 for (let i = 0; i < all_item.length; i++) {
