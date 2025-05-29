@@ -4,18 +4,83 @@
 
 //generate incomplete todo
 
-function generateIncompleteTodo(taskname) {
+function generateIncompleteTodo(taskName) {
   let listItem = document.createElement("li");
   listItem.classList.add("item");
 
   let inputItem = document.createElement("input");
   inputItem.setAttribute("type", "checkbox");
 
-  let label = document.createElement("label");
-  label.innerText = taskname;
+  //add function on checkbox
+  inputItem.onchange = completeTask; // call the function body
 
-  return listItem.append(inputItem, label);
+  let label = document.createElement("label");
+  label.innerText = taskName;
+
+  listItem.append(inputItem, label);
+
+  return listItem;
 }
+
+// complete task
+function completeTask(e) {
+  let checkBox = e.target;
+  //console.log(checkBox);
+
+  let taskItem = checkBox.parentNode;
+  //console.log(taskItem);
+
+  let label = taskItem.querySelector("label");
+  //console.log(label);
+
+  let taskName = label.textContent;
+  //console.log(taskName);
+
+  let taskToAdd = generateCompleteTodo(taskName);
+  //console.log(taskToAdd);
+  document.querySelector(".complete-list ul").appendChild(taskToAdd);
+
+  taskItem.parentNode.removeChild(taskItem); //remove task from list
+}
+//console.log();
+
+//generate complete todo
+
+function generateCompleteTodo(taskName) {
+  let listItem = document.createElement("li");
+  listItem.classList.add("item");
+
+  /* let buttonBack = document.createElement("button");
+  buttonBack.classList.add("btnback"); */
+
+  let buttonDelete = document.createElement("button");
+  buttonDelete.classList.add("delete");
+
+  listItem.append(taskName, " ", buttonDelete);
+
+  return listItem;
+}
+// create form variable
+let todoForm = document.querySelector("form");
+
+// form addEventListener
+todoForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  let taskInput = document.querySelector("#new-task");
+  let taskName = taskInput.value;
+  //console.log(taskName);
+
+  let listItemToAdd = generateIncompleteTodo(taskName); // add the list to the task
+  //console.log(listItemToAdd);
+
+  let listContainer = document.querySelector("#items");
+  //console.log(listContainer);
+
+  listContainer.appendChild(listItemToAdd); // add li to the ul
+
+  taskInput.value = " ";
+});
 
 //let headerElement = document.getElementById("header");
 // console.log(headerElement);
