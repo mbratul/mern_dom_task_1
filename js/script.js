@@ -42,7 +42,33 @@ function completeTask(e) {
 
   taskItem.parentNode.removeChild(taskItem); //remove task from list
 }
-//console.log();
+//back To Incomplete List
+function backToIncompleteList(e) {
+  let buttonBack = e.target;
+  //console.log(buttonBack);
+
+  let taskItem = buttonBack.parentNode;
+  //console.log(taskItem);
+
+  let label = taskItem.querySelector("label");
+  //console.log(label);
+
+  let taskName = label.textContent;
+  //console.log(taskName);
+
+  let taskToAdd = generateIncompleteTodo(taskName);
+  document.querySelector("#items").appendChild(taskToAdd);
+
+  taskItem.parentNode.removeChild(taskItem);
+}
+//delete Task
+
+function deleteTask(e) {
+  let taskItem = e.target.parentNode;
+  let taskContainer = taskItem.parentNode;
+
+  taskContainer.removeChild(taskItem);
+}
 
 //generate complete todo
 
@@ -50,13 +76,20 @@ function generateCompleteTodo(taskName) {
   let listItem = document.createElement("li");
   listItem.classList.add("item");
 
-  /* let buttonBack = document.createElement("button");
-  buttonBack.classList.add("btnback"); */
+  let label = document.createElement("label");
+  label.innerText = taskName;
+
+  let buttonBack = document.createElement("button");
+  buttonBack.classList.add("btnback");
+  buttonBack.innerText = "Back";
+  buttonBack.onclick = backToIncompleteList;
 
   let buttonDelete = document.createElement("button");
   buttonDelete.classList.add("delete");
+  buttonDelete.innerText = "Delete";
+  buttonDelete.onclick = deleteTask;
 
-  listItem.append(taskName, " ", buttonDelete);
+  listItem.append(label, " ", buttonDelete, buttonBack);
 
   return listItem;
 }
