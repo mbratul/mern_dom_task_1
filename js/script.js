@@ -57,6 +57,8 @@ function backToIncompleteList(e) {
   //console.log(taskName);
 
   let taskToAdd = generateIncompleteTodo(taskName);
+  //console.log(taskToAdd);
+
   document.querySelector("#items").appendChild(taskToAdd);
 
   taskItem.parentNode.removeChild(taskItem);
