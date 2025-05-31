@@ -103,11 +103,12 @@ todoForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
   let taskInput = document.querySelector("#new-task");
+  //console.log(taskInput);
   let taskName = taskInput.value;
   //console.log(taskName);
 
   let listItemToAdd = generateIncompleteTodo(taskName); // add the list to the task
-  //console.log(listItemToAdd);
+  console.log(listItemToAdd);
 
   let listContainer = document.querySelector("#items");
   //console.log(listContainer);
