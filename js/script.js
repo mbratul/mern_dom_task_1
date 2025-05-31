@@ -47,7 +47,7 @@ function backToIncompleteList(e) {
   let buttonBack = e.target;
   //console.log(buttonBack);
 
-  let taskItem = buttonBack.parentNode;
+  let taskItem = buttonBack.parentNode; // select the full html block
   //console.log(taskItem);
 
   let label = taskItem.querySelector("label");
